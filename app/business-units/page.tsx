@@ -1,15 +1,15 @@
+'use client';
+
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-
-export const metadata = {
-  title: "Business Units | Nokael Group",
-  description: "Explore Nokael Group's diverse portfolio of businesses across logistics, energy, agriculture, technology, and concierge services.",
-};
+import { Skeleton } from "@/components/ui/skeleton";
+import { useState } from "react";
 
 export default function BusinessUnitsPage() {
   return (
@@ -33,6 +33,7 @@ export default function BusinessUnitsPage() {
               "Warehouse management solutions",
               "Supply chain consulting"
             ]}
+            imageUrl="/images/logistics.jpg"
           />
           
           <Separator />
@@ -49,6 +50,7 @@ export default function BusinessUnitsPage() {
               "Carbon footprint reduction",
               "Sustainable energy investments"
             ]}
+            imageUrl="/images/energy.jpg"
           />
           
           <Separator />
@@ -65,6 +67,7 @@ export default function BusinessUnitsPage() {
               "Farm-to-table distribution",
               "Sustainable agricultural practices"
             ]}
+            imageUrl="/images/farms.jpg"
           />
           
           <Separator />
@@ -81,6 +84,7 @@ export default function BusinessUnitsPage() {
               "Cloud infrastructure management",
               "Digital transformation consulting"
             ]}
+            imageUrl="/images/technology.jpg"
           />
           
           <Separator />
@@ -97,6 +101,7 @@ export default function BusinessUnitsPage() {
               "Event access and planning",
               "Lifestyle management"
             ]}
+            imageUrl="/images/neighborly.jpg"
           />
         </div>
       </section>
@@ -109,14 +114,17 @@ function BusinessUnit({
   description,
   content,
   link,
-  features
+  features,
+  imageUrl
 }: {
   title: string;
   description: string;
   content: string;
   link: string;
   features: string[];
+  imageUrl?: string;
 }) {
+  const [imageLoading, setImageLoading] = useState(true);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div className="lg:col-span-2">
@@ -150,8 +158,28 @@ function BusinessUnit({
           <CardDescription>{description}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
-          <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
-            <span className="text-muted-foreground">Business Unit Logo</span>
+          <div className="aspect-video bg-muted rounded-md overflow-hidden relative">
+            {imageUrl ? (
+              <>
+                {imageLoading && (
+                  <Skeleton className="absolute inset-0" />
+                )}
+                <Image
+                  src={imageUrl}
+                  alt={`${title} logo`}
+                  fill
+                  className={`object-cover transition-opacity duration-300 ${
+                    imageLoading ? 'opacity-0' : 'opacity-100'
+                  }`}
+                  onLoadingComplete={() => setImageLoading(false)}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </>
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-muted-foreground">Business Unit Logo</span>
+              </div>
+            )}
           </div>
         </CardContent>
         <CardFooter>

@@ -11,6 +11,7 @@ export default function Home() {
       <HeroSection 
         headline="Building, Owning & Operating Category-Leading Businesses"
         subheadline="Nokael Group is a diversified UAE-based holding company operating across logistics, energy, agriculture, technology, and concierge services."
+        backgroundImage="/images/background.jpg"
       />
       
       <section className="w-full max-w-7xl mx-auto px-4 py-20">
