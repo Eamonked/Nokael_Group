@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Settings } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { cn } from "@/lib/utils";
@@ -72,6 +72,24 @@ export function SiteHeader() {
         </nav>
         
         <div className="flex items-center gap-4">
+          {/* Admin Portal Link */}
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="w-9 h-9"
+            title="Admin Portal"
+          >
+            <Link 
+              href="https://admin.nokael.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Admin Portal"
+            >
+              <Settings className="h-5 w-5" />
+            </Link>
+          </Button>
+          
           {/* Theme Toggle */}
           <Button
             variant="ghost"
@@ -128,11 +146,25 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
+            
+            {/* Admin Portal Link for Mobile */}
+            <Link
+              href="https://admin.nokael.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-sm font-medium rounded-md text-foreground/80 hover:text-primary hover:bg-secondary/50 flex items-center gap-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <Settings className="h-4 w-4" />
+              Admin Portal
+            </Link>
+            
             <Button asChild className="mt-2">
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                 Get in Touch
               </Link>
             </Button>
+            
             {/* Theme Toggle for Mobile */}
             <Button
               variant="ghost"

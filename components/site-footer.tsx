@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Settings } from "lucide-react";
 import { SiteLogo } from "@/components/site-logo";
 
 export function SiteFooter() {
@@ -111,6 +112,17 @@ export function SiteFooter() {
                 >
                   Contact Us
                 </Link>
+              </li>
+              <li>
+                <a 
+                  href="https://admin.nokael.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary-foreground/80 hover:text-accent transition-colors flex items-center gap-1"
+                >
+                  <Settings className="h-3 w-3" />
+                  Admin Portal
+                </a>
               </li>
             </ul>
           </div>
