@@ -82,7 +82,7 @@ export default function ContactPage() {
                   <h3 className="font-semibold text-lg">Call Us</h3>
                   <p className="text-muted-foreground mb-1">Monday to Friday, 9am to 5pm GST</p>
                   <a href="tel:+97123456789" className="text-primary hover:underline">
-                    +971 2 345 6789
+                    +971 50 971 0446
                   </a>
                 </div>
               </div>

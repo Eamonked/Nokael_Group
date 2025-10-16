@@ -143,7 +143,7 @@ export function SiteFooter() {
                   href="tel:+97123456789"
                   className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
                 >
-                  +971 2 345 6789
+                  +971 50 971 0446
                 </a>
               </li>
               <li className="pt-2">
